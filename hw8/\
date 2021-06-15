@@ -1,0 +1,33 @@
+OBJFILES1 = testclient1.o customer_manager1.o
+OBJFILES2 = testclient2.o customer_manager2.o
+CC = gcc209
+
+
+%.o : %.c
+	$(CC) -c $<
+
+%: %.o
+	$(CC) $^ -o $@
+
+	
+
+
+testclient1 : testclient1.o
+
+testclient2 : testclient2.o
+
+clean:
+	rm -f *.o *~
+
+
+all : $(OBJFILES)
+	$(CC) $(OBJFILES) -o 
+
+testclient1.o: testclient.c customer_manager1.c
+
+testclient2.o: testclient.c custmoer_manager2.c
+
+customer_manager2.o : customer_manager1.c
+
+customer_manager1.o : customer_manager2.c
+

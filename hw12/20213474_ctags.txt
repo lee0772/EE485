@@ -1,0 +1,69 @@
+printf
+  # pri kind tag               file
+  1 F   f    printf            libio/bits/stdio2.h
+               printf (const char *__restrict __fmt, ...)
+  2 F   d    printf            libio/bits/stdio2.h
+               115
+  3 F   f    printf            sysdeps/ieee754/ldbl-opt/nldbl-printf.c
+               printf (const char *fmt, ...)
+  4 FS  d    printf            stdio-common/printf.c
+
+scanf
+  # pri kind tag               file
+  1 F   d    scanf             libio/stdio.h
+               443
+  2 F   f    scanf             sysdeps/ieee754/ldbl-opt/nldbl-scanf.c
+               scanf (const char *fmt, ...)
+
+strcpy
+  # pri kind tag               file
+  1 F   f    strcpy            string/bits/string_fortified.h
+               __NTH (strcpy (char *__restrict __dest, const char *__restrict __src))
+  2 FS  d    strcpy            debug/strcpy_chk.c
+               22
+  3 FS  d    strcpy            string/strcpy.c
+               21
+  4 FS  d    strcpy            sysdeps/i386/i686/multiarch/strcpy.c
+               22
+  5 FS  d    strcpy            sysdeps/i386/i686/multiarch/strcpy.c
+               24
+  6 FS  d    strcpy            sysdeps/powerpc/powerpc64/multiarch/strcat-power7.c
+               28
+  7 FS  d    strcpy            sysdeps/powerpc/powerpc64/multiarch/strcat-power8.c
+               28
+  8 FS  d    strcpy            sysdeps/powerpc/powerpc64/multiarch/strcpy.c
+               20
+  9 FS  d    strcpy            sysdeps/powerpc/powerpc64/multiarch/strcpy.c
+               31
+ 10 FS  d    strcpy            sysdeps/s390/strcpy.c
+               22
+ 11 FS  d    strcpy            sysdeps/s390/strcpy.c
+               24
+ 12 FS  d    strcpy            sysdeps/x86_64/multiarch/strcpy.c
+               22
+ 13 FS  d    strcpy            sysdeps/x86_64/multiarch/strcpy.c
+               24
+
+
+
+function called by malloc in hurd/hurdmalloc.c
+a hurdmalloc.c          assert                       223 assert(i < NBUCKETS);
+b hurdmalloc.c          spin_lock                    225 spin_lock(&fl->lock);
+c hurdmalloc.c          more_memory                  232 more_memory(n, fl);
+d hurdmalloc.c          spin_unlock                  238 spin_unlock(&fl->lock);
+e hurdmalloc.c          HEADER_NEXT                  245 fl->head = HEADER_NEXT (h);
+f hurdmalloc.c          assert                       248 assert (HEADER_CHECK (h) == CHECK_FREE);
+g hurdmalloc.c          HEADER_CHECK                 248 assert (HEADER_CHECK (h) == CHECK_FREE);
+h hurdmalloc.c          HEADER_CHECK                 249 HEADER_CHECK (h) = CHECK_BUSY;
+i hurdmalloc.c          spin_unlock                  255 spin_unlock(&fl->lock);
+j hurdmalloc.c          HEADER_FREE                  261 HEADER_FREE (h) = fl;
+
+
+functions that call spin_lock
+0 hurdmalloc.c malloc                    225 spin_lock(&fl->lock);
+1 hurdmalloc.c free                      303 spin_lock(&fl->lock);
+2 hurdmalloc.c print_malloc_free_list    391 spin_lock(&fl->lock);
+3 hurdmalloc.c _hurd_malloc_fork_prepare 417 spin_lock(&malloc_free_list[i].lock);
+
+
+
